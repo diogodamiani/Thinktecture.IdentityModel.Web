@@ -2,7 +2,7 @@ WCF Web Programming Model extensions for token authentication and claims-based i
 
 For more details see here:
 
-http://www.leastprivilege.com/TokenBasedAuthenticationAndClaimsForRestfulServices.aspx
-http://www.leastprivilege.com/TokenBasedAuthenticationForWCFHTTPRESTServicesAuthentication.aspx
-http://www.leastprivilege.com/TokenBasedAuthenticationForWCFHTTPRESTServicesTheClient.aspx
-http://www.leastprivilege.com/TokenBasedAuthenticationForWCFHTTPRESTServicesAuthorization.aspx
+http://leastprivilege.com/2011/11/15/token-based-authentication-and-claims-for-restful-services/
+http://leastprivilege.com/2011/11/15/token-based-authentication-for-wcf-httprest-services-authentication/
+http://leastprivilege.com/2011/11/15/token-based-authentication-for-wcf-httprest-services-the-client/
+http://leastprivilege.com/2011/11/16/token-based-authentication-for-wcf-httprest-services-authorization/
