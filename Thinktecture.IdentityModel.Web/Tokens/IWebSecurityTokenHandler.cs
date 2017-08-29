@@ -1,9 +1,9 @@
-﻿using Microsoft.IdentityModel.Claims;
+﻿using System.Security.Claims;
 
 namespace Thinktecture.IdentityModel.Web
 {
     interface IWebSecurityTokenHandler
     {
-        IClaimsPrincipal ValidateWebToken(string token);
+      ClaimsPrincipal ValidateWebToken(string token);
     }
 }

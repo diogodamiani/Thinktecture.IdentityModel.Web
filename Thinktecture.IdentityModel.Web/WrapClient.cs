@@ -15,7 +15,6 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Xml;
-using Microsoft.IdentityModel.Tokens.Saml11;
 
 namespace Thinktecture.IdentityModel.Web
 {
@@ -73,10 +72,10 @@ namespace Thinktecture.IdentityModel.Web
         /// <returns>The requested SWT token</returns>
         public SimpleWebToken Issue(SamlSecurityToken token, Uri scope)
         {
-            var handler = new Saml11SecurityTokenHandler();
+            //var handler = new Saml11SecurityTokenHandler();
 
             var sb = new StringBuilder(128);
-            handler.WriteToken(new XmlTextWriter(new StringWriter(sb)), token);
+            //handler.WriteToken(new XmlTextWriter(new StringWriter(sb)), token);
 
             return IssueAssertion(sb.ToString(), "SAML", scope);
         }

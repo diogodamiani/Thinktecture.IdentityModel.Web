@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Text;
-using Microsoft.IdentityModel.Claims;
-using Microsoft.IdentityModel.Tokens;
 using Thinktecture.IdentityModel.Claims;
 
 namespace Thinktecture.IdentityModel.Web
@@ -13,12 +13,12 @@ namespace Thinktecture.IdentityModel.Web
     /// </summary>
     public class WebUserNameSecurityTokenHandler : UserNameSecurityTokenHandler, IWebSecurityTokenHandler
     {
-        public IClaimsPrincipal ValidateWebToken(string token)
+        public ClaimsPrincipal ValidateWebToken(string token)
         {
             var decoded = DecodeBasicAuthenticationHeader(token);
             var securityToken = new UserNameSecurityToken(decoded.Item1, decoded.Item2);
 
-            return ClaimsPrincipal.CreateFromIdentities(ValidateToken(securityToken));
+            return new ClaimsPrincipal(ValidateToken(securityToken));
         }
 
         protected virtual Tuple<string, string> DecodeBasicAuthenticationHeader(string basicAuthToken)
@@ -91,7 +91,7 @@ namespace Thinktecture.IdentityModel.Web
         /// </summary>
         /// <param name="token">The token.</param>
         /// <returns>A ClaimsIdentityCollection representing the identity in the token</returns>
-        public override ClaimsIdentityCollection ValidateToken(SecurityToken token)
+        public override ReadOnlyCollection<ClaimsIdentity> ValidateToken(SecurityToken token)
         {
             if (token == null)
             {
@@ -135,7 +135,7 @@ namespace Thinktecture.IdentityModel.Web
                 }
             }
 
-            return new ClaimsIdentityCollection(new IClaimsIdentity[] { identity });
+            return new ReadOnlyCollection<ClaimsIdentity>(new[] { identity });
         }
 
         /// <summary>

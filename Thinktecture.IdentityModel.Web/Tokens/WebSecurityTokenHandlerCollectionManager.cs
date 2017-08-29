@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.IdentityModel.Tokens;
 using System.Linq;
-using Microsoft.IdentityModel.Claims;
-using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace Thinktecture.IdentityModel.Web
 {
@@ -53,7 +52,7 @@ namespace Thinktecture.IdentityModel.Web
         {
             var collection = new SecurityTokenHandlerCollection(configuration)
             {
-                new WebSaml11SecurityTokenHandler(),
+                //new WebSaml11SecurityTokenHandler(),
                 new EncryptedSecurityTokenHandler()
             };
 
@@ -109,7 +108,7 @@ namespace Thinktecture.IdentityModel.Web
             Add(scheme, collection);
         }
 
-        public IClaimsPrincipal ValidateWebToken(string scheme, string token)
+        public ClaimsPrincipal ValidateWebToken(string scheme, string token)
         {
             if (this.ContainsKey(scheme))
             {

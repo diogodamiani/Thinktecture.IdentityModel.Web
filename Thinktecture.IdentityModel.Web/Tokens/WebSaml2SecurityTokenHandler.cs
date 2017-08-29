@@ -1,8 +1,7 @@
-﻿using System.IO;
+﻿using System.IdentityModel.Tokens;
+using System.IO;
+using System.Security.Claims;
 using System.Xml;
-using Microsoft.IdentityModel.Claims;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.IdentityModel.Tokens.Saml2;
 
 namespace Thinktecture.IdentityModel.Web
 {
@@ -18,10 +17,10 @@ namespace Thinktecture.IdentityModel.Web
             Configuration = configuration;
         }
 
-        public IClaimsPrincipal ValidateWebToken(string token)
+        public ClaimsPrincipal ValidateWebToken(string token)
         {
             var securityToken = ReadToken(new XmlTextReader(new StringReader(token)));
-            return ClaimsPrincipal.CreateFromIdentities(ValidateToken(securityToken));
+            return new ClaimsPrincipal(ValidateToken(securityToken));
         }
     }
 }

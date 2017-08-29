@@ -4,7 +4,6 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Dispatcher;
 using System.ServiceModel.Web;
-using Microsoft.IdentityModel;
 
 namespace Thinktecture.IdentityModel.Web
 {

@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Net;
+using System.Security.Claims;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Web;
 using System.Text;
-using Microsoft.IdentityModel.Claims;
-using Microsoft.IdentityModel.Configuration;
 
 namespace Thinktecture.IdentityModel.Web
 {
@@ -30,7 +29,7 @@ namespace Thinktecture.IdentityModel.Web
             var properties = operationContext.ServiceSecurityContext.AuthorizationContext.Properties;
             var to = operationContext.IncomingMessageHeaders.To.AbsoluteUri;
 
-            IClaimsPrincipal principal;
+            ClaimsPrincipal principal;
             if (TryGetPrincipal(out principal))
             {
                 // set the IClaimsPrincipal
@@ -50,7 +49,7 @@ namespace Thinktecture.IdentityModel.Web
                 if (_configuration.AllowAnonymousAccess)
                 {
                     // set anonymous principal
-                    principal = ClaimsPrincipal.AnonymousPrincipal;
+                    principal = new ClaimsPrincipal(); //ClaimsPrincipal.AnonymousPrincipal;
                     properties["Principal"] = principal;
                 }
                 else
@@ -67,7 +66,7 @@ namespace Thinktecture.IdentityModel.Web
             return CallClaimsAuthorization(principal, operationContext);
         }
 
-        private bool TryGetPrincipal(out IClaimsPrincipal principal)
+        private bool TryGetPrincipal(out ClaimsPrincipal principal)
         {
             principal = null;
 
@@ -117,7 +116,7 @@ namespace Thinktecture.IdentityModel.Web
             return false;
         }
 
-        bool CallClaimsAuthorization(IClaimsPrincipal principal, OperationContext operationContext)
+        bool CallClaimsAuthorization(ClaimsPrincipal principal, OperationContext operationContext)
         {
             string action = string.Empty;
 

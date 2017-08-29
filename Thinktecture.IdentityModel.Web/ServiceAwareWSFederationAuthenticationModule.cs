@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.IdentityModel.Web;
-using System.ServiceModel;
+﻿using System.IdentityModel.Services;
 using System.Web;
 
 namespace Thinktecture.IdentityModel.Web
 {
-    class ServiceAwareWSFederationAuthenticationModule : WSFederationAuthenticationModule
+  class ServiceAwareWSFederationAuthenticationModule : WSFederationAuthenticationModule
     {
         public const string DefaultLabel = "IsService";
 

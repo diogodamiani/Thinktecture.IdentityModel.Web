@@ -1,5 +1,6 @@
 ﻿
-using Microsoft.IdentityModel.Claims;
+using System.Security.Claims;
+
 namespace Thinktecture.IdentityModel.Web
 {
     public class WebTokenWebServiceHostConfiguration
