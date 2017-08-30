@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using Thinktecture.IdentityModel.Utility;
+using Thinktecture.IdentityModel.Extensions;
 
 namespace Thinktecture.Samples
 {

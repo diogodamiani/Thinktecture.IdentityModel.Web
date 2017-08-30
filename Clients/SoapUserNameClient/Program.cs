@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
-using Thinktecture.IdentityModel.Utility;
+using Thinktecture.IdentityModel.Extensions;
 using Thinktecture.Samples;
 
 namespace SoapUserNameClient

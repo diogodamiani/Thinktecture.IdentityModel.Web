@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net.Http;
-using Thinktecture.IdentityModel.Utility;
+using Thinktecture.IdentityModel.Extensions;
 using Thinktecture.IdentityModel.Web;
 using Thinktecture.Samples;
 

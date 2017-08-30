@@ -5,7 +5,6 @@ using System.ServiceModel.Security;
 using Microsoft.IdentityModel.Protocols.WSTrust;
 using Microsoft.IdentityModel.Protocols.WSTrust.Bindings;
 using Microsoft.IdentityModel.SecurityTokenService;
-using Thinktecture.IdentityModel.Utility;
 using Thinktecture.Samples;
 
 namespace SoapAdfsClient

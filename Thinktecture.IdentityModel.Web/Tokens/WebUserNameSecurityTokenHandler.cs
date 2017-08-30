@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
-using Thinktecture.IdentityModel.Claims;
 
 namespace Thinktecture.IdentityModel.Web
 {
@@ -123,17 +122,17 @@ namespace Thinktecture.IdentityModel.Web
 
             var identity = new ClaimsIdentity(claims);
 
-            if (base.Configuration.SaveBootstrapTokens)
-            {
-                if (this.RetainPassword)
-                {
-                    identity.BootstrapToken = unToken;
-                }
-                else
-                {
-                    identity.BootstrapToken = new UserNameSecurityToken(unToken.UserName, null);
-                }
-            }
+            //if (base.Configuration.SaveBootstrapTokens)
+            //{
+            //    if (this.RetainPassword)
+            //    {
+            //        identity.BootstrapToken = unToken;
+            //    }
+            //    else
+            //    {
+            //        identity.BootstrapToken = new UserNameSecurityToken(unToken.UserName, null);
+            //    }
+            //}
 
             return new ReadOnlyCollection<ClaimsIdentity>(new[] { identity });
         }

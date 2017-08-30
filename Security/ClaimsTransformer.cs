@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Microsoft.IdentityModel.Claims;
+using System.Security.Claims;
 
 namespace Thinktecture.Samples
 {
     public class ClaimsTransformer : ClaimsAuthenticationManager
     {
-        public override IClaimsPrincipal Authenticate(string resourceName, IClaimsPrincipal incomingPrincipal)
+        public override ClaimsPrincipal Authenticate(string resourceName, ClaimsPrincipal incomingPrincipal)
         {
             return CreateApplicationPrincipal(incomingPrincipal);
         }
 
-        private IClaimsPrincipal CreateApplicationPrincipal(IClaimsPrincipal incomingPrincipal)
+        private ClaimsPrincipal CreateApplicationPrincipal(ClaimsPrincipal incomingPrincipal)
         {
-            var nameClaim = incomingPrincipal.Identities.First().Claims.First(c => c.ClaimType == ClaimTypes.Name);
+            var nameClaim = incomingPrincipal.Identities.First().Claims.First(c => c.Type == ClaimTypes.Name);
 
             var claims = new List<Claim>
             {
@@ -22,7 +22,7 @@ namespace Thinktecture.Samples
                 new Claim(ClaimTypes.Role, "Operator")
             };
 
-            return ClaimsPrincipal.CreateFromIdentity(new ClaimsIdentity(claims));
+            return new ClaimsPrincipal(new ClaimsIdentity(claims));
         }
     }
 }

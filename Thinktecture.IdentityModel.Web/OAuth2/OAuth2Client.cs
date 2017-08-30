@@ -19,7 +19,7 @@ namespace Thinktecture.IdentityModel.Web.OAuth2
             var response = _client.PostAsync("", CreateFormUserName(userName, password, scope)).Result;
             response.EnsureSuccessStatusCode();
 
-            var json = JsonValue.Parse(response.Content.ReadAsStringAsync().Result).AsDynamic();
+            var json = JsonValue.Parse(response.Content.ReadAsStringAsync().Result);
             return CreateResponseFromJson(json);
         }
 
@@ -28,7 +28,7 @@ namespace Thinktecture.IdentityModel.Web.OAuth2
             var response = _client.PostAsync("", CreateFormAssertion(assertion, assertionType, scope)).Result;
             response.EnsureSuccessStatusCode();
 
-            var json = JsonValue.Parse(response.Content.ReadAsStringAsync().Result).AsDynamic();
+            var json = JsonValue.Parse(response.Content.ReadAsStringAsync().Result);
             return CreateResponseFromJson(json);
         }
 

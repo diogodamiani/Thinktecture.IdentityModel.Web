@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Security;
+using System.Security.Claims;
 using System.Threading;
-using Microsoft.IdentityModel.Claims;
 
 namespace Thinktecture.Samples
 {
@@ -9,7 +9,7 @@ namespace Thinktecture.Samples
     {
         public ViewClaims GetClaims()
         {
-            var id = Thread.CurrentPrincipal.Identity as IClaimsIdentity;
+            var id = Thread.CurrentPrincipal.Identity as ClaimsIdentity;
             if (id == null)
             {
                 throw new SecurityException();
@@ -19,7 +19,7 @@ namespace Thinktecture.Samples
                 from claim in id.Claims
                 select new ViewClaim
                 {
-                    ClaimType = claim.ClaimType,
+                    ClaimType = claim.Type,
                     Value = claim.Value,
                     Issuer = claim.Issuer,
                     OriginalIssuer = claim.OriginalIssuer,

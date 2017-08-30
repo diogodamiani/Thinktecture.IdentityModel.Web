@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using Thinktecture.IdentityModel.Utility;
+using Thinktecture.IdentityModel.Extensions;
 using Thinktecture.IdentityModel.Web.OAuth2;
 using Thinktecture.Samples;
 

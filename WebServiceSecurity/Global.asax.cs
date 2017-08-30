@@ -1,12 +1,11 @@
 ﻿using System;
 using System.IdentityModel.Selectors;
+using System.IdentityModel.Tokens;
 using System.ServiceModel.Activation;
 using System.Web;
 using System.Web.Routing;
-using Microsoft.IdentityModel.Tokens;
 using Thinktecture.IdentityModel;
 using Thinktecture.IdentityModel.Web;
-using Thinktecture.Samples.Security;
 
 namespace Thinktecture.Samples
 {
@@ -32,10 +31,10 @@ namespace Thinktecture.Samples
                 new WebTokenWebServiceHostFactory(SetupSecurityTokenHandler(), configuration),
                 typeof(RestService)));
 
-            routes.Add(new ServiceRoute(
-                "restwin",
-                new IntegratedWebServiceHostFactory(),
-                typeof(RestService)));
+            //routes.Add(new ServiceRoute(
+            //    "restwin",
+            //    new IntegratedWebServiceHostFactory(),
+            //    typeof(RestService)));
         }
 
         private WebSecurityTokenHandlerCollectionManager SetupSecurityTokenHandler()
@@ -61,10 +60,10 @@ namespace Thinktecture.Samples
             adfsConfig.CertificateValidator = X509CertificateValidator.None;
 
             // token decryption (read from config)
-            adfsConfig.ServiceTokenResolver = IdentityModelConfiguration.ServiceConfiguration.CreateAggregateTokenResolver();
+            //adfsConfig.ServiceTokenResolver = IdentityModelConfiguration.ServiceConfiguration.CreateAggregateTokenResolver();
             
-            manager.AddSaml11SecurityTokenHandler("SAML", adfsConfig);
-            //manager.AddSaml2SecurityTokenHandler("SAML", adfsConfig);
+            //manager.AddSaml11SecurityTokenHandler("SAML", adfsConfig);
+            manager.AddSaml2SecurityTokenHandler("SAML", adfsConfig);
             
             #endregion
 

@@ -16,7 +16,7 @@ namespace Thinktecture.IdentityModel.Web
         WebSecurityTokenHandlerCollectionManager _manager;
         WebTokenWebServiceHostConfiguration _configuration;
 
-        ServiceConfiguration _serviceConfiguration = IdentityModelConfiguration.ServiceConfiguration;
+        //ServiceConfiguration _serviceConfiguration = IdentityModelConfiguration.ServiceConfiguration;
 
         public WebTokenServiceAuthorizationManager(WebSecurityTokenHandlerCollectionManager manager, WebTokenWebServiceHostConfiguration configuration)
         {
@@ -39,7 +39,7 @@ namespace Thinktecture.IdentityModel.Web
                 }
                 else
                 {
-                    principal = _serviceConfiguration.ClaimsAuthenticationManager.Authenticate(to, principal);
+                   // principal = _serviceConfiguration.ClaimsAuthenticationManager.Authenticate(to, principal);
                 }
 
                 properties["Principal"] = principal;
@@ -140,7 +140,7 @@ namespace Thinktecture.IdentityModel.Web
                 return _configuration.ClaimsAuthorizationManager.CheckAccess(context);
             }
 
-            return _serviceConfiguration.ClaimsAuthorizationManager.CheckAccess(context);
+            return false; //_serviceConfiguration.ClaimsAuthorizationManager.CheckAccess(context);
         }
 
         internal static void SetAuthenticationHeader(IEnumerable<string> schemes)

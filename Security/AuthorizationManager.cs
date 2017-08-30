@@ -1,4 +1,4 @@
-﻿using Microsoft.IdentityModel.Claims;
+﻿using System.Security.Claims;
 
 namespace Thinktecture.Samples
 {

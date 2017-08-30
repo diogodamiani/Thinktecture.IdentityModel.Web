@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Security.Principal;
-using Microsoft.IdentityModel.Claims;
-using Thinktecture.IdentityModel.Utility;
+using Thinktecture.IdentityModel.Extensions;
 using Thinktecture.Samples;
 
 namespace RestWindowsClient

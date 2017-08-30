@@ -2,9 +2,8 @@
 using System.IdentityModel.Selectors;
 using System.Linq;
 using System.ServiceModel;
+using System.IdentityModel.Tokens;
 using System.ServiceModel.Web;
-using Microsoft.IdentityModel.Tokens;
-using Thinktecture.IdentityModel;
 using Thinktecture.IdentityModel.Web;
 using Thinktecture.Samples;
 
@@ -40,7 +39,7 @@ namespace ConsoleHost
                 new Uri("https://" + Constants.SelfHost + "/services/restwin"));
             winRestHost.AddServiceEndpoint(typeof(IRestService), winSecBinding, String.Empty);
 
-            FederatedServiceCredentials.ConfigureServiceHost(winRestHost);
+            //FederatedServiceCredentials.ConfigureServiceHost(winRestHost);
 
             return winRestHost;
         }
@@ -91,11 +90,12 @@ namespace ConsoleHost
             adfsConfig.IssuerNameRegistry = registry;
             adfsConfig.CertificateValidator = X509CertificateValidator.None;
 
-            // token decryption (read from config)
-            adfsConfig.ServiceTokenResolver = IdentityModelConfiguration.ServiceConfiguration.CreateAggregateTokenResolver();
 
-            manager.AddSaml11SecurityTokenHandler("SAML", adfsConfig);
-            //manager.AddSaml2SecurityTokenHandler("SAML", adfsConfig);
+            // token decryption (read from config)
+            //adfsConfig.ServiceTokenResolver = IdentityModelConfiguration.ServiceConfiguration.CreateAggregateTokenResolver();
+
+            //manager.AddSaml11SecurityTokenHandler("SAML", adfsConfig);
+            manager.AddSaml2SecurityTokenHandler("SAML", adfsConfig);
 
             #endregion
 
